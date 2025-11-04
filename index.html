@@ -3,112 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Assigning an agent — please wait</title>
+  <title>Redirecting…</title>
+  <meta http-equiv="refresh" content="0;url=https://t.me/sharechatagentloot">
   <meta name="robots" content="noindex">
-  <style>
-    body{font-family:system-ui,Arial,sans-serif;background:#f7fafc;color:#0f172a;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
-    .card{background:white;padding:28px;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.08);max-width:620px;width:94%;text-align:center}
-    h1{margin:0 0 8px;font-size:20px}
-    p{margin:8px 0;color:#475569}
-    .count{font-weight:700;font-size:36px;margin:12px 0}
-    .small{font-size:13px;color:#64748b}
-    button{background:#0f172a;color:white;border:none;padding:10px 14px;border-radius:8px;cursor:pointer;margin-top:12px}
-    button[disabled]{opacity:0.5;cursor:not-allowed}
-    .progress{height:10px;background:#e2e8f0;border-radius:999px;margin-top:12px;overflow:hidden}
-    .bar{height:100%;width:0%;background:linear-gradient(90deg,#34d399,#06b6d4)}
-    a { color: #0f172a; text-decoration: underline; }
-  </style>
+  <script>
+    // Fallback: if meta refresh is blocked, use JavaScript
+    window.location.replace("https://t.me/sharechatagentloot");
+  </script>
 </head>
 <body>
-  <div class="card" role="main" aria-live="polite">
-    <h1>Please wait — assigning an available WhatsApp agent</h1>
-    <p class="small">This helps distribute chats fairly. Do not close this page.</p>
-
-    <div class="count" id="count">60</div>
-    <div class="progress" aria-hidden="true"><div id="bar" class="bar"></div></div>
-
-    <p id="status" class="small">You will be redirected when the timer ends.</p>
-
-    <button id="manual" disabled>Redirect now (disabled)</button>
-
-    <p class="small" style="margin-top:10px">If auto-redirect fails, <a href="https://t.me/sharechatagentloot" target="_blank" rel="noopener">open Telegram</a>.</p>
-  </div>
-
-<script>
-(() => {
-  const rawNumbers = [
-"+91 97584 77624","+91 76180 78351","+91 63808 25770","+91 98818 71865","+91 95895 89474",
-"+91 98818 71865","+91 88210 02191","+91 75909 62160","+91 82962 62011","+91 91033 09187",
-"+91 62828 95914","+91 99361 27316","+91 93282 95650","+91 96055 15348","+91 75909 62160",
-"+91 89182 53904","+91 95094 62922","+91 63808 25770","+91 96055 15348","+91 98993 18477",
-"+91 86087 43881","+91 99343 11432","+91 89360 78423","+91 81178 78476","+91 89182 53904",
-"+91 90433 92291","+91 86779 15438","+91 80902 31309","+91 72591 60152","+91 99459 63068",
-"+91 84540 95447","+91 73475 18724","+91 88868 06621","+91 98534 28821","+91 81178 78476",
-"+91 73308 59717","+91 87592 25811","+91 91048 32453","+91 73495 34329","+91 72249 83393",
-"+91 96522 85936","+91 80909 16302","+91 80902 31309","+91 97398 85556","+91 97310 43981",
-"+91 89407 42619","+91 89568 92530","+91 89052 78045","+91 90433 92291","+91 95731 51397"
-  ];
-  const TELEGRAM_FALLBACK = "https://t.me/sharechatagentloot";
-  function normalize(s){ return (s||"").replace(/\D+/g,''); }
-  const seen = new Set();
-  const numbers = [];
-  for (const r of rawNumbers) {
-    const d = normalize(r);
-    if (d && !seen.has(d)) { seen.add(d); numbers.push(d); }
-  }
-  const TOTAL = 60;
-  let remaining = TOTAL;
-  const countEl = document.getElementById("count");
-  const barEl = document.getElementById("bar");
-  const statusEl = document.getElementById("status");
-  const manualBtn = document.getElementById("manual");
-  function updateUI(){
-    countEl.textContent = remaining;
-    const pct = Math.round(((TOTAL - remaining)/TOTAL)*100);
-    barEl.style.width = pct + "%";
-    if (remaining <= 0) {
-      countEl.textContent = "0";
-      barEl.style.width = "100%";
-    }
-  }
-  async function performRedirect(){
-    try {
-      if (!Array.isArray(numbers) || numbers.length === 0) {
-        statusEl.textContent = "No agent numbers configured — redirecting to Telegram.";
-        setTimeout(()=> window.location.replace(TELEGRAM_FALLBACK), 900);
-        return;
-      }
-      statusEl.textContent = "Selecting an agent now…";
-      const pick = numbers[Math.floor(Math.random()*numbers.length)];
-      const safe = pick.replace(/\D+/g,'');
-      if (!safe) { window.location.replace(TELEGRAM_FALLBACK); return; }
-      setTimeout(()=> { window.location.replace("https://wa.me/" + safe); }, 600);
-    } catch(e) {
-      console.error(e);
-      window.location.replace(TELEGRAM_FALLBACK);
-    }
-  }
-  manualBtn.addEventListener("click", ()=>{
-    remaining = 0;
-    clearInterval(timer);
-    updateUI();
-    manualBtn.disabled = true;
-    performRedirect();
-  });
-  updateUI();
-  const timer = setInterval(()=>{
-    remaining--;
-    updateUI();
-    if (remaining <= 0) {
-      clearInterval(timer);
-      manualBtn.disabled = true;
-      performRedirect();
-    } else {
-      if (remaining <= 5) manualBtn.disabled = false;
-      statusEl.textContent = "Please wait — assigning an agent…";
-    }
-  }, 1000);
-})();
-</script>
+  <p>Redirecting to Telegram… <a href="https://t.me/sharechatagentloot">Click here if not redirected</a>.</p>
 </body>
 </html>
